@@ -7,13 +7,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите заметку: ");
-        String noteText = scanner.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Введите заметку: ");
+            String noteText = scanner.nextLine();
 
-        Note note = new Note(noteText);
-        NoteWriter.writeNoteToFile(note);
+            Note note = new Note(noteText);
+            NoteWriter.writeNoteToFile(note);
 
-        System.out.println("Дозапись в файл: " + note);
+            System.out.println("Дозапись в файл: " + note);
+        }
     }
 }
