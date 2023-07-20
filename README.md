@@ -12,7 +12,38 @@
 
 Скомпилируйте и запустите посредством CLI
 
-1. (доп).Создать два Docker-образа.
+## Решение
+Создадим структуру пакетов и файлов проекта:
+
+JavaCore
+- com 
+- - mynotesapp
+- - - Main.java
+- - - logic
+- - - - Note.java
+- - - - NoteWriter.java
+- - - utils
+- - - - DateUtils.java
+- notes.txt
+
+где:
+
+- Main.java - класс с методом main, который будет точкой входа в приложение.
+- Note.java - класс для представления заметки.
+- NoteWriter.java - класс для записи заметок в файл.
+- DateUtils.java - утилитарный класс для работы с датами.
+- notes.txt - файл для хранения заметок.
+
+```agsl
+Компиляция исходных файлов
+javac -d out com/mynotesapp/Main.java com/mynotesapp/logic/*.java com/mynotesapp/utils/*.java
+
+Запуск приложения
+java -classpath out com.mynotesapp.Main
+
+```
+
+2. (доп).Создать два Docker-образа.
    Один должен компилировать Java-проект обратно в папку на компьютере пользователя,
    а второй забирать скомпилированные классы и исполнять их.
    Пример листинга для docker-compose приведен в презентации семинара
